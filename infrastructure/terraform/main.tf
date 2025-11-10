@@ -55,6 +55,18 @@ variable "db_password" {
   sensitive   = true
 }
 
+variable "google_client_id" {
+  description = "Google OAuth Client ID"
+  type        = string
+  sensitive   = true
+}
+
+variable "google_client_secret" {
+  description = "Google OAuth Client Secret"
+  type        = string
+  sensitive   = true
+}
+
 # Data sources
 data "aws_caller_identity" "current" {}
 
@@ -77,6 +89,14 @@ output "cognito_user_pool_id" {
 
 output "cognito_client_id" {
   value = aws_cognito_user_pool_client.web.id
+}
+
+output "cognito_domain" {
+  value = aws_cognito_user_pool_domain.main.domain
+}
+
+output "cognito_hosted_ui_url" {
+  value = "https://${aws_cognito_user_pool_domain.main.domain}.auth.${var.aws_region}.amazoncognito.com"
 }
 
 output "rds_endpoint" {

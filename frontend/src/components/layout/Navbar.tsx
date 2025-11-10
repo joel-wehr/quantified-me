@@ -155,9 +155,9 @@ export default function Navbar() {
                     </button>
                   </div>
                   <div className="my-2 text-center fw-bold fs-10 text-body-quaternary">
-                    <a className="text-body-quaternary me-1" href="#!">Privacy policy</a>
+                    <a className="text-body-quaternary me-1" href="/privacy-policy">Privacy policy</a>
                     •
-                    <a className="text-body-quaternary mx-1" href="#!">Terms</a>
+                    <a className="text-body-quaternary mx-1" href="/terms-of-service">Terms</a>
                   </div>
                 </div>
               </div>

@@ -1,4 +1,16 @@
+import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../../stores/authStore';
+import { authService } from '../../services/authService';
+
 export default function Navbar() {
+  const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
+
+  const handleSignOut = async () => {
+    await authService.signOut();
+    navigate('/login');
+  };
+
   return (
     <nav className="navbar navbar-top fixed-top navbar-expand" id="navbarDefault">
       <div className="collapse navbar-collapse justify-content-between">
@@ -82,7 +94,13 @@ export default function Navbar() {
               aria-expanded="false"
             >
               <div className="avatar avatar-l">
-                <img className="rounded-circle" src="/assets/img/team/40x40/57.webp" alt="" />
+                {user?.picture ? (
+                  <img className="rounded-circle" src={user.picture} alt={user.name || user.email} />
+                ) : (
+                  <div className="avatar-name rounded-circle">
+                    <span>{user?.name?.[0] || user?.email?.[0] || 'U'}</span>
+                  </div>
+                )}
               </div>
             </a>
             <div
@@ -93,9 +111,15 @@ export default function Navbar() {
                 <div className="card-body p-0">
                   <div className="text-center pt-4 pb-3">
                     <div className="avatar avatar-xl">
-                      <img className="rounded-circle" src="/assets/img/team/72x72/57.webp" alt="" />
+                      {user?.picture ? (
+                        <img className="rounded-circle" src={user.picture} alt={user.name || user.email} />
+                      ) : (
+                        <div className="avatar-name rounded-circle">
+                          <span>{user?.name?.[0] || user?.email?.[0] || 'U'}</span>
+                        </div>
+                      )}
                     </div>
-                    <h6 className="mt-2 text-body-emphasis">User Name</h6>
+                    <h6 className="mt-2 text-body-emphasis">{user?.name || user?.email || 'User'}</h6>
                   </div>
                 </div>
                 <div className="overflow-auto scrollbar" style={{ height: '10rem' }}>
@@ -122,15 +146,18 @@ export default function Navbar() {
                 </div>
                 <div className="card-footer p-0 border-top border-translucent">
                   <div className="px-3">
-                    <a className="btn btn-phoenix-secondary d-flex flex-center w-100" href="#!">
+                    <button
+                      className="btn btn-phoenix-secondary d-flex flex-center w-100"
+                      onClick={handleSignOut}
+                    >
                       <span className="me-2" data-feather="log-out"></span>
                       Sign out
-                    </a>
+                    </button>
                   </div>
                   <div className="my-2 text-center fw-bold fs-10 text-body-quaternary">
-                    <a className="text-body-quaternary me-1" href="#!">Privacy policy</a>
+                    <a className="text-body-quaternary me-1" href="/privacy-policy">Privacy policy</a>
                     •
-                    <a className="text-body-quaternary mx-1" href="#!">Terms</a>
+                    <a className="text-body-quaternary mx-1" href="/terms-of-service">Terms</a>
                   </div>
                 </div>
               </div>

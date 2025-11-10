@@ -1,0 +1,15 @@
+# Terraform Backend Configuration
+# First, create the S3 bucket manually:
+# aws s3 mb s3://quantified-me-terraform-state --region us-east-1
+# aws s3api put-bucket-versioning --bucket quantified-me-terraform-state --versioning-configuration Status=Enabled
+
+# Then copy this to backend.tf and run: terraform init
+
+terraform {
+  backend "s3" {
+    bucket = "quantified-me-terraform-state"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+    encrypt = true
+  }
+}

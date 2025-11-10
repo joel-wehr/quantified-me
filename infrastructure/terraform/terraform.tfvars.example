@@ -1,0 +1,14 @@
+# Terraform Variables Example
+# Copy this to terraform.tfvars and fill in your values
+
+aws_region   = "us-east-1"
+environment  = "staging"  # or "production"
+project_name = "quantified-me"
+
+# Database password (store in AWS Secrets Manager or use TF_VAR_db_password env var)
+# db_password = "CHANGE-ME-TO-SECURE-PASSWORD"
+
+# Google OAuth credentials (obtain from Google Cloud Console)
+# See docs/GOOGLE_OAUTH_SETUP.md for instructions
+# google_client_id     = "your-google-client-id.apps.googleusercontent.com"
+# google_client_secret = "your-google-client-secret"

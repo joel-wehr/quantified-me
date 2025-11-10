@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
+import authRoutes from './routes/auth.routes';
 
 // Load environment variables
 dotenv.config();
@@ -11,7 +12,10 @@ const port = process.env.PORT || 3001;
 
 // Middleware
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  credentials: true,
+}));
 app.use(express.json());
 
 // Health check endpoint
@@ -35,6 +39,9 @@ app.get('/api/v1', (req: Request, res: Response) => {
     },
   });
 });
+
+// Mount auth routes
+app.use('/api/v1/auth', authRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {

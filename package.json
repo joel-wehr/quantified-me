@@ -1,0 +1,32 @@
+{
+  "name": "quantified-me",
+  "version": "0.1.0",
+  "description": "Personal health intelligence platform with AI-assisted insights",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "setup": "node scripts/setup.js",
+    "copy-phoenix": "node scripts/copy-phoenix-assets.js"
+  },
+  "keywords": [
+    "health",
+    "quantified-self",
+    "analytics",
+    "ai",
+    "privacy"
+  ],
+  "author": "Joel W",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}

@@ -1,0 +1,64 @@
+name: Feature Request
+description: Suggest a new feature for Quantified Me
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        Thanks for suggesting a new feature! Please provide details below.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: A clear description of what you want to achieve
+      placeholder: As a user, I want to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe the problem this feature would solve
+      placeholder: This would help me...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Which component does this affect?
+      options:
+        - Frontend (UI/UX)
+        - Backend (API/Logic)
+        - Data Pipeline
+        - AI/Insights
+        - Infrastructure
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Low
+        - Medium
+        - High
+        - Critical
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: ai-assisted
+    attributes:
+      label: AI Agent Implementation
+      description: Should an AI sub-agent implement this feature?
+      options:
+        - label: This feature could be implemented by an AI agent
+          required: false

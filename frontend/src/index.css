@@ -1,0 +1,15 @@
+/* Phoenix theme styles are loaded via index.html */
+/* This file is for any additional React-specific styles */
+
+/* Ensure smooth transitions */
+* {
+  box-sizing: border-box;
+}
+
+/* Override any conflicting Vite default styles */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Additional custom styles can be added here */

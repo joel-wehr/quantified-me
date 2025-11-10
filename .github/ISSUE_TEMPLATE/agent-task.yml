@@ -1,0 +1,78 @@
+name: AI Agent Task
+description: Create a task for an AI sub-agent to implement
+title: "[Agent]: "
+labels: ["ai-assisted", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## AI Agent Task
+        This issue will be processed by an AI sub-agent for automated implementation.
+
+  - type: dropdown
+    id: agent-type
+    attributes:
+      label: Agent Type
+      description: Which specialized agent should handle this?
+      options:
+        - Backend Developer Agent
+        - Frontend Developer Agent
+        - DevOps Agent
+        - Data Engineer Agent
+        - Testing Agent
+        - Documentation Agent
+    validations:
+      required: true
+
+  - type: textarea
+    id: task-description
+    attributes:
+      label: Task Description
+      description: Detailed description of what needs to be implemented
+      placeholder: |
+        Implement a new API endpoint that...
+        - Accepts POST requests
+        - Validates input data
+        - Returns JSON response
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know this task is complete?
+      placeholder: |
+        - [ ] API endpoint responds to POST /api/metrics
+        - [ ] Input validation works correctly
+        - [ ] Unit tests pass
+        - [ ] Documentation updated
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Any additional information, files, or references
+      placeholder: |
+        Related files:
+        - backend/routes/metrics.ts
+        - shared/types/metrics.ts
+
+        References:
+        - Similar implementation in #123
+
+  - type: checkboxes
+    id: requirements
+    attributes:
+      label: Requirements
+      options:
+        - label: Unit tests required
+          required: false
+        - label: Integration tests required
+          required: false
+        - label: Documentation required
+          required: false
+        - label: Breaking change (requires version bump)
+          required: false

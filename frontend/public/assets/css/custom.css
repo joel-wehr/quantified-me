@@ -1,0 +1,79 @@
+/* Quantified Me Custom Styles */
+
+/* Brand Colors */
+:root {
+  --qm-primary: #3b82f6;
+  --qm-secondary: #8b5cf6;
+
+  /* Health Metric Colors */
+  --health-activity: #10b981;
+  --health-sleep: #3b82f6;
+  --health-recovery: #8b5cf6;
+  --health-nutrition: #f59e0b;
+  --health-mental: #ec4899;
+
+  /* Status Colors */
+  --status-good: #10b981;
+  --status-warning: #f59e0b;
+  --status-alert: #ef4444;
+}
+
+/* Custom metric cards */
+.metric-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Health metric specific styles */
+.metric-activity {
+  border-left: 4px solid var(--health-activity);
+}
+
+.metric-sleep {
+  border-left: 4px solid var(--health-sleep);
+}
+
+.metric-recovery {
+  border-left: 4px solid var(--health-recovery);
+}
+
+.metric-nutrition {
+  border-left: 4px solid var(--health-nutrition);
+}
+
+.metric-mental {
+  border-left: 4px solid var(--health-mental);
+}
+
+/* Chart containers */
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .chart-container {
+    height: 250px;
+  }
+}
